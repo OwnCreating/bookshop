@@ -9,7 +9,14 @@
             <!-- Items -->
             @foreach ($products as $product)              
             <div class="card col-sm-6 col-md-3 py-2 m-3 shadow align-items-center">
-                <img src="{{$product->images}}" width="265px" height="280px" alt="img">
+                {{-- @foreach (unserialize($product->images) as $image)
+                    <img src="{{$image}}" width="265px" height="280px" alt="img">
+                    @php
+                        break;
+                    @endphp
+                @endforeach --}}
+                <img src="{{unserialize($product->images)[0]}}" width="265px" height="280px" alt="img">
+
                 <div class="card-body">
                     <h4 class="card-title">{{$product->title}}</h4>
                     <p class="card-text limited-text">{{$product->description}}</p>

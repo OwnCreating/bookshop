@@ -9,7 +9,8 @@
     <div class="card col-sm-6 col-md-12 py-2 m-3 shadow text-dark text-justify">
         <div class="row justify-content-around no-gutters">
             <div class="col-md-3 text-center">
-                <img src="{{$product->images}}" width="265px" height="280px" alt="img">
+                <img src="{{$product->images[0]}}" width="265px" height="280px" alt="img">
+                <img src="{{$product->images[1]}}" width="265px" height="280px" alt="img">
             </div>
             <div class="col-md-9">
                 <div class="card-body">

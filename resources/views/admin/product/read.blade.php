@@ -18,7 +18,7 @@
                         <th>Image</th>
                         <th>Price</th>
                         <th>Edit</th>
-                        <th>Create</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,10 +32,15 @@
                         <td>{{$product->description}}</td>
                         <td>{{$product->cat_id}}</td>
                         <td>{{$product->brand_id}}</td>
-                        <td><img src="{{$product->images}}" width="100" height="100" alt="images"> </td>
+                        <td>
+                        @foreach (unserialize($product->images) as $image)
+                            <img src="{{$image}}" width="100" height="100" alt="image">        
+                        @endforeach
+                        </td>
                         <td>{{$product->price}}</td>
                         <td><a href="#" class="fas fa-edit" data-id=""></a></td>
                         <td><a href="#" class="fas fa-trash-alt" data-id=""></a></td>
+                        
                     </tr>
                     @php
                         $i++;

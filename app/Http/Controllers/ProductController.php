@@ -51,13 +51,19 @@ class ProductController extends Controller
         // dd($request);
 
         // file upload
+        $filearray = array();
+
         if($request->hasfile('images')) {
             $images = $request->file('images');
-            $upload_path = public_path().'/storage/images/';
-            $name = $images->getClientOriginalName();
-            $images->move($upload_path, $name);
-            $path = '/storage/images/'.$name; 
-        }
+            foreach($images as $image) {
+                // $image = $request->file('images'); // For single file
+                $upload_path = public_path().'/storage/images/';
+                $name = uniqid().'_'.$image->getClientOriginalName();
+                $image->move($upload_path, $name);
+                $path = '/storage/images/'.$name;
+                array_push($filearray, $name);
+            }
+        } 
         else {
             $path = "";
         }
@@ -67,7 +73,7 @@ class ProductController extends Controller
             "description" => request('description'),
             "cat_id" => request('category'),
             "brand_id" => request('brand'),
-            "images" => $path,
+            "images" => serialize($filearray),
             "price" => request('price')
         ]);
 
