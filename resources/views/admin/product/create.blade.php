@@ -90,8 +90,8 @@
                     <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('images') }}</label>
 
                     <div class="col-md-6">
-                        <input id="images" type="file" class="@error('images') is-invalid @enderror" name="images"
-                            value="{{ old('images') }}" required autocomplete="images" autofocus>
+                        <input id="images" type="file" class="@error('images') is-invalid @enderror" name="images[]"
+                            value="{{ old('images') }}" required autocomplete="images" multiple autofocus>
 
                         @error('images')
                         <span class="invalid-feedback" role="alert">
