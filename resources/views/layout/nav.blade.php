@@ -46,28 +46,33 @@
                 </li>
 
                 <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
+                {{-- <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link active" href="#" id="category">
                         Category
                     </a>
-                </li>
+                </li> --}}
 
-                <div class="topbar-divider d-none d-sm-block"></div>
+                {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
 
                 <!-- Nav Item - Messages -->
-                <li class="nav-item dropdown no-arrow mx-1">
+                {{-- <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link active" href="#" id="brand">
                         Brand
                     </a>
-                </li>
+                </li> --}}
 
                 <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Nav Item - Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link active" href="#" id="category">
-                        <span><i class="fas fa-shopping-basket"></i>
-                        </span> 
+                    <a class="nav-link active" href="{{route('front.cart')}}" id="category">
+                        <i class="fas fa-shopping-basket">
+                            <sup class="pl-1" style="color:white;">
+                                @if (session('items'))
+                                    {{count(session('items'))}}
+                                @endif
+                            </sup>
+                        </i>  
                     </a>
                 </li>
 
@@ -78,24 +83,32 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        {{-- <span class="mr-2">Admin</span> --}}
+                        @if (Auth::check())
+                            <span class="mr-2">{{auth()->user()->name}}</span>
+                        @endif
                         <i class="fas fa-users-cog"></i>
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Log in
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Log out
-                        </a>
-                        <a class="dropdown-item" href="#">
+                        @if (!Auth::check())
+                        <a class="dropdown-item" href="{{route('register.show')}}">
                             <i class="fas fa-registered fa-sm fa-fw mr-2 text-gray-400"></i>
                             Register
                         </a>
+                        <a class="dropdown-item" href="{{route('login.show')}}">
+                            <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Log in
+                        </a>
+                        @else
+                        <a class="dropdown-item" href="{{route('logout')}}">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Log out
+                        </a>
+                        @endif
+                        
+                        
+                        
                 </li>
 
             </ul>

@@ -34,7 +34,7 @@
                         <td>{{$product->brand_id}}</td>
                         <td>
                         @foreach (unserialize($product->images) as $image)
-                            <img src="{{$image}}" width="100" height="100" alt="image">        
+                            <img src="{{$image}}" class="pb-1" width="100" height="100" alt="image">        
                         @endforeach
                         </td>
                         <td>{{$product->price}}</td>

@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\ProductController;
 
 class ProductController extends Controller
 {
@@ -61,7 +64,7 @@ class ProductController extends Controller
                 $name = uniqid().'_'.$image->getClientOriginalName();
                 $image->move($upload_path, $name);
                 $path = '/storage/images/'.$name;
-                array_push($filearray, $name);
+                array_push($filearray, $path);
             }
         } 
         else {
@@ -76,6 +79,18 @@ class ProductController extends Controller
             "images" => serialize($filearray),
             "price" => request('price')
         ]);
+
+        $data = [
+            'title' => 'Mailing',
+            'content' => 'Using Mailgun!!!'
+        ];
+
+        Mail::send('admin.email.mail', $data, function($message){
+            $name = 'bobocodex';
+            $email = 'bobo.codex@gmail.com';
+            $subject = 'This is a testing';
+            $message->to($email, $name)->subject($subject);
+        });
 
         return back()->with('status', "Product is created successfully!!!");
     }

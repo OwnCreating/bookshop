@@ -10,10 +10,14 @@
   <meta name="author" content="">
 
   <title>@yield('title')</title>
+  <link rel="shortcut icon" href="https://img.icons8.com/bubbles/50/000000/book-shelf.png" type="icon">
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet"> --}}
+  {{-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet"> --}}
+  {{-- <link href="https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap" rel="stylesheet"> --}}
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
@@ -22,7 +26,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="txt-color">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -48,9 +52,7 @@
 
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-color text-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2019</span>

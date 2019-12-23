@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RoleInsertFormRequest;
 
-class PageController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        $roles = Role::all();
+        return view('backend.roles.index', compact('roles'));
     }
 
     /**
@@ -23,7 +27,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.roles.create');
     }
 
     /**
@@ -32,9 +36,12 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleInsertFormRequest $request)
     {
-        //
+        Role::create([
+            'name' => request('name')
+        ]);
+        return redirect('/admin/roles/create')->with('status','Role is successfully created!!!');
     }
 
     /**

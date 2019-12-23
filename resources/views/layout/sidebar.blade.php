@@ -30,10 +30,10 @@
                 <span>Home</span>
             </a>
         </li>
-        
+
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#catgory"
-                aria-expanded="true" aria-controls="catgory">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#catgory" aria-expanded="true"
+                aria-controls="catgory">
                 <i class="fas fa-list-alt"></i>
                 <span>Categoties</span>
             </a>
@@ -50,8 +50,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brand"
-                aria-expanded="true" aria-controls="brand">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brand" aria-expanded="true"
+                aria-controls="brand">
                 <i class="fas fa-palette"></i>
                 <span>Brands</span>
             </a>
@@ -66,8 +66,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account"
-                aria-expanded="true" aria-controls="account">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account" aria-expanded="true"
+                aria-controls="account">
                 <i class="fas fa-user"></i>
                 <span>Account</span>
             </a>
@@ -82,8 +82,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contact"
-                aria-expanded="true" aria-controls="contact">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contact" aria-expanded="true"
+                aria-controls="contact">
                 <i class="fas fa-address-book"></i>
                 <span>Contact</span>
             </a>
@@ -98,30 +98,75 @@
         <!-- End User Section -->
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-        
+
         <!-- Admin Section -->
+        {{-- @php
+        $admin = 0;
+        if(Auth::check()){
+            if(auth()->user()->name==="Admin"){
+                $admin = true;
+            }
+        }
+        @endphp --}}
+        @if (Auth::check())         
+        @if(Auth::user()->hasRole('Manager'))
+        
         <div class="sidebar-heading">
             Admin Panel
         </div>
         <!-- Admin - Products -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
-                aria-expanded="true" aria-controls="product">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product" aria-expanded="true"
+                aria-controls="product">
                 <i class="fas fa-list-alt"></i>
                 <span>Products</span>
             </a>
             <div id="product" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Products</h6>
-                <a class="collapse-item" href="{{route('product.create')}}">create</a>
+                    <a class="collapse-item" href="{{route('product.create')}}">create</a>
                     <a class="collapse-item" href="{{route('product.index')}}">products table</a>
                 </div>
             </div>
         </li>
-        <!-- End Admin Section -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true"
+                aria-controls="user">
+                <i class="fas fa-list-alt"></i>
+                <span>Users</span>
+            </a>
+            <div id="user" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Users</h6>
+                    <a class="collapse-item" href="{{route('user.index')}}">Users Table</a>
+                    {{-- <a class="collapse-item" href="{{route('user.edit')}}">Users Table</a> --}}
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#role" aria-expanded="true"
+                aria-controls="role">
+                <i class="fas fa-list-alt"></i>
+                <span>Roles</span>
+            </a>
+            <div id="role" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Roles</h6>
+                    <a class="collapse-item" href="{{route('role.index')}}">roles table</a>
+                    <a class="collapse-item" href="{{route('role.create')}}">Create</a>
+                </div>
+            </div>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+        @endif
+        @endif
+
+        <!-- End Admin Section -->
+
+
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
