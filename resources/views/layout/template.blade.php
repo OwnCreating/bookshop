@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  
   <title>@yield('title')</title>
   <link rel="shortcut icon" href="https://img.icons8.com/bubbles/50/000000/book-shelf.png" type="icon">
 
@@ -100,6 +101,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+
+  @yield('script')
 
 </body>
 

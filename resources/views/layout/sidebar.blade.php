@@ -114,7 +114,14 @@
         <div class="sidebar-heading">
             Admin Panel
         </div>
-        <!-- Admin - Products -->
+
+        <li class="nav-item">
+            <a href="{{route('index')}}" class="nav-link collapsed">
+                <i class="fas fa-users-cog"></i>
+                <button class="btn btn-sm">Admin</button>
+            </a>
+        </li>
+        <!-- Products -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product" aria-expanded="true"
                 aria-controls="product">
@@ -129,7 +136,22 @@
                 </div>
             </div>
         </li>
-
+        <!-- Categories -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true"
+                aria-controls="category">
+                <i class="fas fa-list-alt"></i>
+                <span>Categories</span>
+            </a>
+            <div id="category" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Products</h6>
+                    <a class="collapse-item" href="{{route('category.index')}}">Categories table</a>
+                    <a class="collapse-item" href="{{route('category.create')}}">create</a>
+                </div>
+            </div>
+        </li>
+        <!-- Users -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true"
                 aria-controls="user">
@@ -144,7 +166,7 @@
                 </div>
             </div>
         </li>
-
+        <!-- Roles -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#role" aria-expanded="true"
                 aria-controls="role">
