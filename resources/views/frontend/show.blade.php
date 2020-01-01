@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('frontend.layouts.template')
 
 @section('title', 'Detail')
 

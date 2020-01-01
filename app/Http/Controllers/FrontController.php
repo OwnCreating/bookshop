@@ -3,18 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    public function index() {
-        $products = Product::all();
-        return view('front.index', compact('products'));
+    public function index(Request $request) {
+
+        $id = $request->id;
+        if($id) {
+            $products = Product::where('cat_id', $id)->get();
+            
+            // echo $products->count();
+            // var_dump($products);
+            $categories = Category::get();
+            return view('frontend.index', compact('products', 'categories'));
+        }
+        else {
+            $products = Product::get();
+            $categories = Category::get();
+            return view('frontend.index', compact('products', 'categories'));
+        }
+        // return view('frontend.index', compact('products', 'categories'));
     }
 
     public function show($id) {
         $product = Product::find($id);
-        return view('front.show', compact('product'));
+        return view('frontend.show', compact('product'));
     }
 
     public function add(Request $request, $id) {
@@ -54,6 +69,6 @@ class FrontController extends Controller
 
         // }
 
-        return view('front.cart', compact('products'));
+        return view('frontend.cart', compact('products'));
     }
 }

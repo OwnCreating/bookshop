@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('frontend.layouts.template')
 
 @section('title', 'Product Table')
 
@@ -25,7 +25,7 @@
                     @php
                         $i=1;
                     @endphp
-                    @foreach ($products as $product)
+                    {{-- @foreach ($products as $product)
                     <tr>
                         <td>{{$i}}</td>
                         <td>{{$product->title}}</td>
@@ -45,7 +45,7 @@
                     @php
                         $i++;
                     @endphp
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

@@ -17,7 +17,8 @@
 
 // Front
 
-Route::get('/', 'FrontController@index')->name('front.index');
+Route::get('/index', 'FrontController@index')->name('front.index');
+Route::get('/cat_pdt', 'FrontController@category')->name('front.category');
 Route::get('/detail/{id}', 'FrontController@show')->name('front.show');
 Route::get('/product/{id}/add-cart', 'FrontController@add')->name('front.add');
 Route::get('/product/cart', 'FrontController@cart')->name('front.cart');
@@ -51,7 +52,7 @@ Route::group(array('prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'manag
     // Category
     // Route::resource('category', 'CategoryController');
 
-    Route::get('/category', 'CategoryController@index')->name('category.index');
+    Route::post('/category', 'CategoryController@index')->name('category.index');
     Route::get('/category/create', 'CategoryController@store')->name('category.create');
     Route::post('/category/store', 'CategoryController@store')->name('category.store');
     Route::post('/category/edit', 'CategoryController@edit')->name('category.edit');
@@ -65,5 +66,7 @@ Route::group(array('prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'manag
 
 
 
+// testing
 
+// route::view('/index', 'layout.index');
 

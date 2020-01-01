@@ -1,0 +1,120 @@
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow bg-color">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                <li class="nav-item dropdown no-arrow d-sm-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search fa-fw"></i>
+                    </a>
+                    <!-- Dropdown - Messages -->
+                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                        aria-labelledby="searchDropdown">
+                        <form class="form-inline mr-auto w-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small"
+                                    placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Alerts -->
+                {{-- <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link active" href="#" id="category">
+                        Category
+                    </a>
+                </li> --}}
+
+                {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
+
+                <!-- Nav Item - Messages -->
+                {{-- <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link active" href="#" id="brand">
+                        Brand
+                    </a>
+                </li> --}}
+
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - Alerts -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link active" href="{{route('front.cart')}}" id="category">
+                        <i class="fas fa-shopping-basket">
+                            <sup class="pl-1" style="color:white;">
+                                @if (session('items'))
+                                    {{count(session('items'))}}
+                                @endif
+                            </sup>
+                        </i>  
+                    </a>
+                </li>
+
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        @if (Auth::check())
+                            <span class="mr-2">{{auth()->user()->name}}</span>
+                        @endif
+                        <i class="fas fa-users-cog"></i>
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        @if (!Auth::check())
+                        <a class="dropdown-item" href="{{route('register.show')}}">
+                            <i class="fas fa-registered fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Register
+                        </a>
+                        <a class="dropdown-item" href="{{route('login.show')}}">
+                            <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Log in
+                        </a>
+                        @else
+                        <a class="dropdown-item" href="{{route('logout')}}">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Log out
+                        </a>
+                        @endif
+                        
+                        
+                        
+                </li>
+
+            </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+
+
