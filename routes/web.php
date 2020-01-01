@@ -18,7 +18,7 @@
 // Front
 
 Route::get('/', 'FrontController@index')->name('front.index');
-Route::get('/cat_pdt', 'FrontController@category')->name('front.category');
+Route::get('/cat_pdt', 'FrontController@getCategory')->name('front.category');
 Route::get('/detail/{id}', 'FrontController@show')->name('front.show');
 Route::get('/product/{id}/add-cart', 'FrontController@add')->name('front.add');
 Route::get('/product/cart', 'FrontController@cart')->name('front.cart');

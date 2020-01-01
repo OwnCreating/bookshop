@@ -52,12 +52,12 @@
                                 var_dump($categories);
                             @endphp --}}
                             @foreach ($categories as $category)
-                              <a class="dropdown-item" href="{{route('front.index', ['id' =>$category->id])}}">
+                            <a class="dropdown-item" href="{{route('front.category', ['id' =>$category->id])}}">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{$category->name}}
-                              </a>
+                            </a>
                             @endforeach
-                            
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
@@ -99,7 +99,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 </body>
 

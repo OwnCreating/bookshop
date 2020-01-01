@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    public function index(Request $request) {
+    public function index() {
 
+        $products = Product::get();
+        $categories = Category::get();
+        return view('frontend.index', compact('products', 'categories'));
+
+    }
+
+    public function getCategory(Request $request) {
         $id = $request->id;
         if($id) {
             $products = Product::where('cat_id', $id)->get();
@@ -24,12 +31,12 @@ class FrontController extends Controller
             $categories = Category::get();
             return view('frontend.index', compact('products', 'categories'));
         }
-        // return view('frontend.index', compact('products', 'categories'));
     }
 
     public function show($id) {
         $product = Product::find($id);
-        return view('frontend.show', compact('product'));
+        $categories = Category::get();
+        return view('frontend.show', compact('product', 'categories'));
     }
 
     public function add(Request $request, $id) {
